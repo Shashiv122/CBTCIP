@@ -1,4 +1,4 @@
-#checkin both the numbers for feedback
+#checking both the numbers for feedback
 def judgement(confidential, guess ):
         con_list = list(confidential)
         g_list = list(guess)
