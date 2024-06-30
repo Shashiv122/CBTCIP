@@ -1,3 +1,4 @@
+#checkin both the numbers for feedback
 def judgement(confidential, guess ):
         con_list = list(confidential)
         g_list = list(guess)
@@ -9,6 +10,7 @@ def judgement(confidential, guess ):
         return correct_dig, avail_dig-correct_dig
 
 
+#main code for the game
 def Mastermind_Game():
         print("Welcome to the world of Mastermind")
 
