@@ -46,8 +46,20 @@ def Mastermind_Game():
 
                 if correct_dig == len(p1_con):
                         correct = True
-                        print(f"Player 1 guessed correctly in ", p1_tries ," attemopts!")
+                        print(f"Player 1 guessed correctly in ", p1_tries ," attempts!")
                 else:
                         print(f"Digit in correct place: ",correct_dig ,"Misplaced digit: ", misplaced_dig )
 
+	#winner announced
+	winner(p1_tries,p2_tries)
+
+
+#announcing the winner of Mastermind Game
+def winner(p1_t,p2_t):
+	if p1_tries < p2_tries:
+		ptint(" Player 1 is the Mastermind! ")
+	elif p1_tries > p2_tries :
+		print(" Player 2 is the Mastermind! ")
+	else:
+		print(" It's a tie! ")
 Mastermind_Game()
