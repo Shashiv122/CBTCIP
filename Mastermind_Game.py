@@ -13,13 +13,22 @@ def judgement(confidential, guess )
 										
 
 def Mastermind_Game():
-	print("welcome to the world of Mastermind")
+	print("Welcome to the world of Mastermind")
 
 	#player1 set the confidential number
-	p1_con = int( input( " player 1: Enter your confidential number: "))
+	p1_con = int( input( " Player 1: Enter your confidential number: "))
 	p2_tries = 0
 	correct = False
 
 
 	#Player2 guesses the confidential number
-	
+	while not correct:
+		guess = int(input("Player 2: Guess the number: "))
+		p2_tries +=1
+		correct_dig , misplaced_dig = judgement(p1_con, guess)
+
+		if correct_dig == len(p1_con):
+			correct = True
+			print(f"Player 2 guessed correctly in ", p2_tries ," attemopts!")
+		else:
+			print(f"Digit in correct place: ",cooerct_dig ,"\n Misplaced digit: ", misplaced_dig )
