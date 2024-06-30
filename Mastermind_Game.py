@@ -11,3 +11,15 @@ def judgement(confidential, guess )
 		avail_dig = sum(  for m in g_list)
 		return correct_dig, avail_dig-correct_dig
 										
+
+def Mastermind_Game():
+	print("welcome to the world of Mastermind")
+
+	#player1 set the confidential number
+	p1_con = int( input( " player 1: Enter your confidential number: "))
+	p2_tries = 0
+	correct = False
+
+
+	#Player2 guesses the confidential number
+	
