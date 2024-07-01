@@ -22,5 +22,11 @@ class reciept_pdf(FPDF):
 
 
         #declaring the title function of the payment reciept
+        def heading(s,h1):
+                s.set_font("Arial", "B",18)
+                s.cell(0,12,h1,0,1,"c")
+
+
+        #declaring transaction details function of the paayment details 
 
         
