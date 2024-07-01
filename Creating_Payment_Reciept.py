@@ -46,7 +46,43 @@ class reciept_pdf(FPDF):
                 s.ln()
                 s.set_font("Arial","",11)
                 Sr_No=0
-                for Itm, Qty, Unit_P in items:
-                        s.
+                n=len(items)
+                for i in n:
+                        for Itm, Qty, Unit_P in items:
+                                s.cell(35,5,str(i),1)
+                                s.cell(35,5,Itm,1)
+                                s.cell(35,5,str(Qty),1)
+                                s.cell(35,5,f'${Unit_P:.2f}',1)
+                                s.cell(35,5,f'${Qty*Unit_P:.2f}',1) 
+                                s.ln()
 
-        
+
+        #Declaring the funcion to sum up the total amount of payment Reciept
+        def total(s, t):
+                s.set_font("Calibri (Body)","B",11)
+                s.cell(175,5,"Total Amount",1)
+                s.cell(35,5,f"${t:.2f}",1)
+
+        #Declaring the function for generating the payment reciept 
+        def gen_receipt(transaction_id,cust_name, items):
+                pdf=reciept_pdf()
+                pdf.add_page()
+                pdf.heading("Payment Receipt")
+                pdf.transact_detail(transaction_id, cust_name, datetime.date.today().strftime("%d-%m-%Y"))
+                pdf.ln(10)
+                pdf.itemslist(items)
+                tot=sum(Qty*Unit_P for _,Qty,Unit_P in items)
+                pdf.total(tot)
+
+                #creating the pdf of receipt
+                p_file=f'receipt_{transaction_id}.pdf'
+                pdf.output(p_file)
+
+
+                #path of the pdf
+                f_path=os.path.abspath(p_file)
+                print(f"Path of the Saved Receipt: {f_path}")
+
+                #printing the payment receipt 
+                
+                
