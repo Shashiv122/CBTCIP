@@ -63,26 +63,45 @@ class reciept_pdf(FPDF):
                 s.cell(175,5,"Total Amount",1)
                 s.cell(35,5,f"${t:.2f}",1)
 
-        #Declaring the function for generating the payment reciept 
-        def gen_receipt(transaction_id,cust_name, items):
-                pdf=reciept_pdf()
-                pdf.add_page()
-                pdf.heading("Payment Receipt")
-                pdf.transact_detail(transaction_id, cust_name, datetime.date.today().strftime("%d-%m-%Y"))
-                pdf.ln(10)
-                pdf.itemslist(items)
-                tot=sum(Qty*Unit_P for _,Qty,Unit_P in items)
-                pdf.total(tot)
+ #Declaring the function for generating the payment reciept 
+def gen_receipt(transaction_id,cust_name, items):
+        pdf=reciept_pdf()
+        pdf.add_page()
+        pdf.heading("Payment Receipt")
+        pdf.transact_detail(transaction_id, cust_name, datetime.date.today().strftime("%d-%m-%Y"))
+        pdf.ln(10)
+        pdf.itemslist(items)
+        tot=sum(Qty*Unit_P for _,Qty,Unit_P in items)
+        pdf.total(tot)
 
-                #creating the pdf of receipt
-                p_file=f'receipt_{transaction_id}.pdf'
-                pdf.output(p_file)
+        #creating the pdf of receipt
+        p_file=f'receipt_{transaction_id}.pdf'
+        pdf.output(p_file)
 
 
-                #path of the pdf
-                f_path=os.path.abspath(p_file)
-                print(f"Path of the Saved Receipt: {f_path}")
+        #path of the pdf
+        f_path=os.path.abspath(p_file)
+        print(f"Path of the Saved Receipt: {f_path}")
 
-                #printing the payment receipt 
-                
-                
+        #printing the payment receipt 
+        if os.name=='nt': #used for windows
+                os.startfile(f_path,"print")
+        elif os.name=='posix': #used for linux and macOS
+                os.system(f'lpr{f_path}')
+        else:
+                print("Printing receipt not supported on this OS!")
+
+
+#taking input the list of items
+x=int(input("Enter the number of items"))
+items[]
+for i in range(0,x):
+        items[i]=[(input("Enter the item: "),input("Enter the quantity of item: ",input("inter the amount: "))]
+
+
+#generrating receipt 
+tid=input("Enter the transaction id: ")
+name=input("Enter customer name: ")
+
+#Calling function to generate receipt
+gen_receipt(tid,name,items)
