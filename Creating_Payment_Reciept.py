@@ -94,9 +94,9 @@ def gen_receipt(transaction_id,cust_name, items):
 
 #taking input the list of items
 x=int(input("Enter the number of items"))
-items[]
+items=[]
 for i in range(0,x):
-        items[i]=[(input("Enter the item: "),input("Enter the quantity of item: ",input("inter the amount: "))]
+        items[i]=[(input("Enter the item: "),input("Enter the quantity of item: "),float(input("inter the amount: ")))]
 
 
 #generrating receipt 
