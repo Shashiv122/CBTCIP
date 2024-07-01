@@ -28,5 +28,25 @@ class reciept_pdf(FPDF):
 
 
         #declaring transaction details function of the paayment details 
+        def transact_detail(s,transaction_id, cust_name, date):
+                s.set_font("Arial"," ",13)
+                s.cell(0,10,f"TRANSACTION ID: ", transaction_id,0,1)
+                s.cell(0,10,f"CUSTOMER NAME: ", cust_name,0,1)
+                s.cell(0,10,f"DATE: ", date,0,1)
+
+
+        #declaring the item list function for payment reciept
+        def itemslist(s,item):
+                s.set_font("Calibri (Body)","B",11)
+                s.cell(35,5,"Sr No.",1)
+                s.cell(35,5,"Item",1)
+                s.cell(35,5,"Quantity",1)
+                s.cell(35,5,"Unit Price",1)
+                s.cell(35,5,"Total Price",1)
+                s.ln()
+                s.set_font("Arial","",11)
+                Sr_No=0
+                for Itm, Qty, Unit_P in items:
+                        s.
 
         
