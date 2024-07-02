@@ -11,14 +11,14 @@ class reciept_pdf(FPDF):
         #declaring the header function
         def head(s):
                 s.set_foont("Eras Demi ITC", "B",12)
-                s.cell(0,12,"----* XYZ Shop *----",1,1,"c")
+                s.cell(0,12,"----* XYZ Shop *----",0,1,"c")
 
 
         #declaring the footer function of payment reciept
         def foot(s):
                 s.set_y(-15)
                 s.set_font("Cambria","I",7)
-                s.cell(0,12,f'page ',s.page_no(),0,0,"c")
+                s.cell(0,12,f'page {s.page_no()}',0,0,"c")
 
 
         #declaring the title function of the payment reciept
@@ -29,10 +29,10 @@ class reciept_pdf(FPDF):
 
         #declaring transaction details function of the paayment details 
         def transact_detail(s,transaction_id, cust_name, date):
-                s.set_font("Arial"," ",13)
-                s.cell(0,10,f"TRANSACTION ID: ", transaction_id,0,1)
-                s.cell(0,10,f"CUSTOMER NAME: ", cust_name,0,1)
-                s.cell(0,10,f"DATE: ", date,0,1)
+                s.set_font("Arial","",13)
+                s.cell(0,10,f"TRANSACTION ID:  {transaction_id}",0,1)
+                s.cell(0,10,f"CUSTOMER NAME: {cust_name}",0,1)
+                s.cell(0,10,f"DATE: {date}",0,1)
 
 
         #declaring the item list function for payment reciept
@@ -45,16 +45,13 @@ class reciept_pdf(FPDF):
                 s.cell(35,5,"Total Price",1)
                 s.ln()
                 s.set_font("Arial","",11)
-                Sr_No=0
-                n=len(items)
-                for i in n:
-                        for Itm, Qty, Unit_P in items:
-                                s.cell(35,5,str(i),1)
-                                s.cell(35,5,Itm,1)
-                                s.cell(35,5,str(Qty),1)
-                                s.cell(35,5,f'${Unit_P:.2f}',1)
-                                s.cell(35,5,f'${Qty*Unit_P:.2f}',1) 
-                                s.ln()
+                for i, (Itm, Qty, Unit_P) in enumerate(items,1):
+                        s.cell(35,5,str(i),1)
+                        s.cell(35,5,Itm,1)
+                        s.cell(35,5,str(Qty),1)
+                        s.cell(35,5,f'${Unit_P:.2f}',1)
+                        s.cell(35,5,f'${Qty*Unit_P:.2f}',1) 
+                        s.ln()
 
 
         #Declaring the funcion to sum up the total amount of payment Reciept
@@ -95,8 +92,11 @@ def gen_receipt(transaction_id,cust_name, items):
 #taking input the list of items
 x=int(input("Enter the number of items"))
 items=[]
-for i in range(0,x):
-        items[i]=[(input("Enter the item: "),input("Enter the quantity of item: "),float(input("inter the amount: ")))]
+for i in range(x):
+        item= (input("Enter the item: ")
+        Qty = imt(input("Enter the quantity of item: "))
+        Unit_P = float(input("inter the amount: "))
+        items.append((items,Qty,Unit_P))
 
 
 #generrating receipt 
