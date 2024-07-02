@@ -93,7 +93,7 @@ def gen_receipt(transaction_id,cust_name, items):
 x=int(input("Enter the number of items"))
 items=[]
 for i in range(x):
-        item= (input("Enter the item: ")
+        item= input("Enter the item: ")
         q = int(input("Enter the quantity of item: "))
         up = float(input("inter the amount: "))
         items.append((items,q,up))
