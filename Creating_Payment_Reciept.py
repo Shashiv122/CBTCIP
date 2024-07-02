@@ -94,8 +94,8 @@ x=int(input("Enter the number of items"))
 items=[]
 for i in range(x):
         item= (input("Enter the item: ")
-        Qty = int(input("Enter the quantity of item: "))
-        Unit_P = float(input("inter the amount: "))
+        qty = int(input("Enter the quantity of item: "))
+        unit_P = float(input("inter the amount: "))
         items.append((items,Qty,Unit_P))
 
 
