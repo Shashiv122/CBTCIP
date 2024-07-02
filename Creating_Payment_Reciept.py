@@ -94,9 +94,9 @@ x=int(input("Enter the number of items"))
 items=[]
 for i in range(x):
         item= (input("Enter the item: ")
-        qty = int(input("Enter the quantity of item: "))
-        unit_P = float(input("inter the amount: "))
-        items.append((items,qty,unit_P))
+        q = int(input("Enter the quantity of item: "))
+        up = float(input("inter the amount: "))
+        items.append((items,q,up))
 
 
 #generrating receipt 
