@@ -1,6 +1,6 @@
 import os
 pip install fpdf
-import fpdf from FPDF
+from fpdf import FPDF
 import datetime
 
 #creating class named recieptpdf for the details regarding the transaction and storing the transaction details
@@ -94,7 +94,7 @@ x=int(input("Enter the number of items"))
 items=[]
 for i in range(x):
         item= (input("Enter the item: ")
-        Qty = imt(input("Enter the quantity of item: "))
+        Qty = int(input("Enter the quantity of item: "))
         Unit_P = float(input("inter the amount: "))
         items.append((items,Qty,Unit_P))
 
