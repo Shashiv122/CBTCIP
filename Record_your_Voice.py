@@ -5,7 +5,7 @@ pip install sounddevice
 conda install pytorch torchvision torchaudio -c pytorch
 import torch
 print(torch.__version__)
-import sounddevice
+import sounddevice as sd
 pip install scipy
 from scipy.io.wavfile import write
 from tkinter import *
